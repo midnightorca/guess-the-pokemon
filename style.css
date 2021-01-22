@@ -135,5 +135,11 @@ footer {
     #choices {
         display: flex;
         flex-direction: column;
+        justify-content: start;
+        margin-top: -10px;
+    }
+    
+    #playAgain {
+        margin-top: 25px;
     }
 }
