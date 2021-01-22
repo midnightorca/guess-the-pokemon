@@ -11,7 +11,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-size: 100vw;
     max-width: 100%;
     opacity: 80%;
 }
@@ -108,4 +107,33 @@ footer {
     width: 100%;
     bottom: 0;
     left: 0;
+}
+
+
+/* media queries */
+@media (max-width: 480px) {
+    #background {
+        object-fit: cover;
+        object-position: 15% 0%;
+        width: auto;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    #randomPoke {
+        margin-left: calc(50vw - 200px);
+        margin-top: 10px;
+    }
+
+    #choices {
+        display: flex;
+        flex-direction: column;
+    }
 }
