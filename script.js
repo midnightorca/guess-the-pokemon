@@ -24,6 +24,19 @@ pokemon.getPokemonArray = quantity => {
     for (let i = 0; i < quantity; i++) {
         
         let pokemonId = Math.floor(Math.random() * 150 + 1);
+        
+        // if (!pokemonData.includes(pokemonId)) {
+        //     console.log(pokemonId);
+        //     return pokemonId;
+        // };
+        const onePokemon = pokemon.getCharacter(pokemonId);
+        pokemonData.push({
+            id: onePokemon.id,
+            name: onePokemon.name,
+            image_url: onePokemon.sprites.front_default
+        });        
+        
+        
         //
         // const isPokemonId = id => {
         //     return pokemonId === id;
@@ -38,12 +51,6 @@ pokemon.getPokemonArray = quantity => {
         // }
         // console.log('found it');
         //
-        const onePokemon = pokemon.getCharacter(pokemonId);
-        pokemonData.push({
-            id: onePokemon.id,
-            name: onePokemon.name,
-            image_url: onePokemon.sprites.front_default
-        });        
     };
     return pokemonData;
 };
@@ -95,7 +102,6 @@ pokemon.setPlayAgainClick = () => {
         $('#playAgain').css('visibility', 'hidden');
 
         let pokemonData = pokemon.getPokemonArray(NUMBER_POKEMON);
-        console.log(pokemonData);
         
         pokemon.makeButtons(pokemonData);
 
@@ -115,9 +121,9 @@ pokemon.startGame = () => {
     $('.starter').on('click', () => {
         $('#start').css('visibility', 'hidden');
         $('#start').css('margin-top', '0px');
+        $('#background').css('visibility', 'visible');
         //
         let pokemonData = pokemon.getPokemonArray(NUMBER_POKEMON);
-        console.log(pokemonData);
         
         pokemon.makeButtons(pokemonData);
 

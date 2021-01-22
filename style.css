@@ -4,12 +4,25 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after { box-sizing: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+#background {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: 100vw;
+    max-width: 100%;
+    opacity: 80%;
+}
+
 h1 {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
+    text-shadow: 2px #ECF6AC;
 }
 
 h3 {
@@ -51,8 +64,8 @@ h3 {
     width: 400px;
     height: 400px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 14vw;
+    /* margin-right: auto; */
 }
 
 #choices {
