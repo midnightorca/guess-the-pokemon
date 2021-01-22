@@ -64,7 +64,6 @@ h3 {
     height: 400px;
     display: block;
     margin-left: 14vw;
-    /* margin-right: auto; */
 }
 
 #choices {
@@ -102,7 +101,6 @@ footer {
     font-family: 'Press Start 2P';
     font-size: 10px;
     text-align: center;
-    /* display: absolute; */
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -121,24 +119,25 @@ footer {
 
     h1 {
         font-size: 30px;
+        padding-bottom: 0;
     }
 
     h3 {
         font-size: 15px;
+        padding: 0;
     }
 
     #randomPoke {
         margin-left: calc(50vw - 200px);
-        margin-top: 10px;
     }
 
     #choices {
         display: flex;
         flex-direction: column;
         justify-content: start;
-        margin-top: -10px;
+        margin-top: -50px;
     }
-    
+
     #playAgain {
         margin-top: 25px;
     }
