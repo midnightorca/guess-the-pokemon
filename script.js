@@ -3,54 +3,35 @@ const pokemon = {};
 
 pokemon.baseUrl = 'https://pokeapi.co/api/v2';
 
-//get random pokemon character
-
-//get name of said pokemon character and two other random ones
-//if player guesses correct, show this
-//if player guesses wrong, show this
-
+//get info from api
 pokemon.getCharacter = (pokemonId) => {
     let response = $.ajax({
         url: `${pokemon.baseUrl}/pokemon/${pokemonId}/`,
         dataType: 'json',
-        method: 'GET', 
+        method: 'GET',
         async: false
     }).responseJSON;
     return response;
 };
 
+//get info of number of pokemon requested
 pokemon.getPokemonArray = quantity => {
     let pokemonData = [];
     for (let i = 0; i < quantity; i++) {
         
-        let pokemonId = Math.floor(Math.random() * 150 + 1);
+        let pokemonId;
         
-        // if (!pokemonData.includes(pokemonId)) {
-        //     console.log(pokemonId);
-        //     return pokemonId;
-        // };
+        //loop to check for duplicates in array
+        do {
+            pokemonId = Math.floor(Math.random() * 150 + 1);
+        } while (pokemonData.includes(pokemonId)); 
+        
         const onePokemon = pokemon.getCharacter(pokemonId);
         pokemonData.push({
             id: onePokemon.id,
             name: onePokemon.name,
             image_url: onePokemon.sprites.front_default
         });        
-        
-        
-        //
-        // const isPokemonId = id => {
-        //     return pokemonId === id;
-        // };
-        // console.log(pokemonData.find(isPokemonId));
-        
-        // const found = pokemonData.find(pokemonId);
-        // if (found === pokemonId) {
-        //     console.log('duplicate found');
-        // } else {
-        //     console.log(pokemonId);
-        // }
-        // console.log('found it');
-        //
     };
     return pokemonData;
 };
@@ -64,6 +45,7 @@ pokemon.makeButtons = pokemonData => {
     });
 };
 
+//function to choose random pokemon to be displayed
 pokemon.choosePokemon = multiPokemon => {
     let chosen = Math.floor(Math.random() * multiPokemon.length);
     return multiPokemon[chosen];    
@@ -78,6 +60,7 @@ pokemon.displayImg = onePokemon => {
 };
 
 pokemon.setAnswerClick = () => {  
+    //create event listener for when user chooses an answer
     $('button.choice').on('click', event => {
         $(event.target).css({'background-color': 'black', 'border': '5px double #ECF6AC'});
         $('.choice').css({'color': 'red', 'cursor': 'unset'});
@@ -85,17 +68,16 @@ pokemon.setAnswerClick = () => {
         $('.correct').css('color', 'green');
         $('#randomPoke').css('filter', 'initial');
         $('.choice').prop('disabled', true);  
-
+        //create timeout for play again button to pop up
         setTimeout(function() {
             $('#randomPoke').css('visibility', 'hidden');
-            // $('.choice').css('visibility', 'hidden');
             $('#playAgain').css('visibility', 'visible');
-
         }, 1000);
     });
 };
 
 pokemon.setPlayAgainClick = () => {
+    //event listener for when user clicks play again
     $('#playAgain').on('click', () => {
         $('#pokeShadow').empty();
         $('#choices').empty();
@@ -108,12 +90,11 @@ pokemon.setPlayAgainClick = () => {
         let chosenPokemon = pokemon.choosePokemon(pokemonData);
         pokemon.displayImg(chosenPokemon);
 
-        //add class of 'correct' to chosen pokemon button
         $(`#pokemon${chosenPokemon.id}`).addClass('correct');
-        //reveal correct answer
+        
         pokemon.setAnswerClick();
         pokemon.setPlayAgainClick();
-    })
+    });
 };
 
 pokemon.startGame = () => {
@@ -122,6 +103,7 @@ pokemon.startGame = () => {
         $('#start').css('visibility', 'hidden');
         $('#start').css('margin-top', '0px');
         $('#background').css('visibility', 'visible');
+        $('#choices').css('visibility', 'visible');
         //
         let pokemonData = pokemon.getPokemonArray(NUMBER_POKEMON);
         
@@ -138,10 +120,9 @@ pokemon.startGame = () => {
     });
 };
 
-
 pokemon.init = () => {
     pokemon.startGame();
-}
+};
 
 $(function(){
     pokemon.init();//document ready
