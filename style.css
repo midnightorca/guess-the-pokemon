@@ -139,17 +139,17 @@ footer {
     }
 
     #randomPoke {
-        margin-left: calc(50vw - 200px);
+        left: calc(50vw - 200px);  
+        top: calc(45vh - 200px);  
     }
 
     #choices {
         display: flex;
         flex-direction: column;
         justify-content: start;
-        margin-top: -50px;
     }
 
     #playAgain {
-        top: 50vw;
+        top: 35vh;
     }
 }
