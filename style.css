@@ -63,7 +63,9 @@ h3 {
     width: 400px;
     height: 400px;
     display: block;
-    margin-left: 14vw;
+    position: absolute;
+    top: 13vw;
+    left: 14vw;
 }
 
 #choices {
@@ -72,9 +74,9 @@ h3 {
     position: absolute;
     width: 80vw;
     left: 50%;
+    bottom: 2vw;
     transform: translate(-50%, 0);
     justify-content: space-between;
-    margin-top: 25px;
     background-color: white;
     border: 6px double black;
     border-radius: 10px;
