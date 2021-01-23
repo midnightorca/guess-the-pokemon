@@ -4,6 +4,11 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after { box-sizing: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+@font-face {
+	font-family: "Pokemon Solid";
+	src: url(./assets/Pokemon\ Solid.ttf) format("truetype");
+}
+
 #background {
     visibility: hidden;
     position: absolute;
@@ -88,7 +93,6 @@ button.choice {
     border: 1px solid black;
     margin: 10px 30px;
     padding: 10px 20px;
-    /* border-radius: 5px; */
     background-color: #ECF6AC;
     border-radius: 10px;
     border: 5px double black;
@@ -102,7 +106,6 @@ button.hover:hover {
     border: 5px double #ECF6AC;
 
 }
-
 
 .correct {
     background-color: white;
@@ -126,6 +129,11 @@ footer {
         object-position: 15% 0%;
         width: auto;
         max-width: 100%;
+    }
+
+    #pokemon {
+        font-family: "Pokemon Solid";
+        font-size: 40px;
     }
 
     h1 {
