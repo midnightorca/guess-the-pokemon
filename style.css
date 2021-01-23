@@ -155,7 +155,6 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: start;
-        margin-top: 25px;
     }
 
     #playAgain {
